@@ -1,27 +1,37 @@
 <template>
   <div>
-    <v-app-bar color="#062157">
+    <v-app-bar color="primary">
       <v-col class="text-right">
-        <Button></Button>
+        <div>
+          <v-btn
+            :href="url"
+            color="white"
+            text
+            plain
+          >Iniciar sesión</v-btn>
+        </div>
       </v-col>
     </v-app-bar>
   </div>
 </template>
 
 <script>
-import Button from '../components/Button';
 
 export default {
   name: 'Home',
   components: {
-    Button,
+    //
   },
   data: () => ({
-    //
+    url: '',
   }),
   methods: {
     //
   },
+
+  created() {
+    this.url = this.$baseURL + '/auth';
+  }
 }
 </script>
 

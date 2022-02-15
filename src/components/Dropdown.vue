@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-menu :close-on-click="true">
+    <v-menu :close-on-click="true" offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           color="red"
@@ -10,20 +10,15 @@
           v-on="on"
           class="px-5"
         ><font-awesome-icon icon="user" class="mr-2" />{{ user.username }}
-          <font-awesome-icon icon="arrow-down" class="ml-2" />
         </v-btn>
       </template>
 
-      <v-list
-        class="dropdown"
-        outlined
-        flat
-        nav
-        dense
-      ><v-list-item v-for="(item, index) in items" :key="index" >
-          <fontawesome-icon :icon="item.icon"></fontawesome-icon>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
+      <v-list>
+        <v-list-item-group>
+          <v-list-item>
+            <v-list-item-content @click="logout">Cerrar sesión</v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-menu>
   </div>
@@ -33,10 +28,14 @@
 export default {
   data: () => ({
     user: null,
-    items: [
-      { title: 'Cerrar sesión', icon: 'sign-out-alt' }
-    ]
   }),
+
+  methods: {
+    logout: function() {
+      localStorage.clear();
+      this.$router.push('/Home');
+    }
+  },
 
   created() {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -45,13 +44,5 @@ export default {
 </script>
 
 <style>
-  .dropdown {
-    margin-top: 35px;
-  }
-  .dropdown-menu {
-    background-color: #062157;
-  }
-  .dropdown-menu-text {
-    color: white;
-  }
+
 </style>

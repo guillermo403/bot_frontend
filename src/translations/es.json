@@ -1,0 +1,8 @@
+{
+  "logs": {
+    "addMemberToClan": "Añadir miembros",
+    "removeMemberFromClan": "Sacar miembros",
+    "createClan": "Crear clan",
+    "deleteClan": "Borrar clan"
+  }
+}

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Dashboard from '../views/Dashboard.vue'
 import Login from '../views/Login.vue'
+import views from '../views'
 
 Vue.use(VueRouter)
 
@@ -15,17 +15,37 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: views.Dashboard
+  },
+  {
+    path: '/embeds',
+    name: 'Embeds',
+    component: views.Embeds
+  },
+  {
+    path: '/clanes',
+    name: 'Clanes',
+    component: views.Clanes
+  },
+  {
+    path: '/roles',
+    name: 'Roles',
+    component: views.Roles
+  },
+  {
+    path: '/logs',
+    name: 'Logs',
+    component: views.Logs
   },
   {
     path: '/login/:userid',
-    name: 'login',
+    name: 'Login',
     component: Login
   },
   {
     path: '*',
-    name: 'Home',
-    component: Home
+    name: 'default',
+    redirect: '/home'
   }
 ]
 
